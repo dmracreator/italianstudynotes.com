@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Study Notes: an interactive Italian A2 course with vocabulary and speaking practice." />
+  <title>Study Notes — Italian A2</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Study Notes home">
+      <span class="brand-mark">SN</span>
+      <span>
+        <strong>Study Notes</strong>
+        <small>Practical A2 course</small>
+      </span>
+    </a>
+
+    <nav class="topnav" aria-label="Main navigation">
+      <button class="nav-btn active" data-view="home">Course</button>
+      <button class="nav-btn" data-view="practice">Practice</button>
+      <button class="nav-btn" data-view="progress">Progress</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home-view" class="view active">
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">ITALIAN A2 • REAL CONVERSATIONS</span>
+          <h1>Learn the Italian people actually speak.</h1>
+          <p>
+            Twenty practical units with everyday vocabulary, native-style expressions,
+            realistic dialogues, speaking prompts, and interactive tests.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-btn" id="continue-btn">Start unit 1</button>
+            <button class="secondary-btn" id="quick-practice-btn">Quick practice</button>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <p class="hero-card-label">Course progress</p>
+          <strong id="hero-progress-value">0%</strong>
+          <div class="progress-track"><span id="hero-progress-bar"></span></div>
+          <p id="hero-progress-text">Begin your first unit.</p>
+        </aside>
+      </section>
+
+      <section class="section-shell">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">COURSE CONTENT</span>
+            <h2>Choose a unit</h2>
+          </div>
+          <p>Each unit combines vocabulary, common phrases, a dialogue, a short text, and speaking practice.</p>
+        </div>
+        <div id="unit-grid" class="unit-grid"></div>
+      </section>
+    </section>
+
+    <section id="unit-view" class="view">
+      <div class="unit-layout">
+        <aside class="unit-sidebar">
+          <button class="back-link" id="back-to-course">← All units</button>
+          <div id="unit-side-list"></div>
+        </aside>
+
+        <article class="unit-content">
+          <div class="unit-title-row">
+            <div>
+              <span class="eyebrow" id="unit-number-label"></span>
+              <h1 id="unit-title"></h1>
+              <p id="unit-description"></p>
+            </div>
+            <button class="primary-btn" id="unit-test-btn">Test this unit</button>
+          </div>
+
+          <nav class="content-tabs" aria-label="Unit sections">
+            <button class="content-tab active" data-tab="vocabulary">Vocabulary</button>
+            <button class="content-tab" data-tab="sentences">Useful sentences</button>
+            <button class="content-tab" data-tab="dialogue">Dialogue</button>
+            <button class="content-tab" data-tab="text">Reading text</button>
+            <button class="content-tab" data-tab="speaking">Speaking task</button>
+          </nav>
+
+          <div id="unit-tab-content" class="tab-panel"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="practice-view" class="view">
+      <section class="section-shell practice-shell">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">PRACTICE CENTRE</span>
+            <h1>Test what you know</h1>
+          </div>
+          <p>Select a unit and practise vocabulary or responding naturally to spoken Italian.</p>
+        </div>
+
+        <div class="practice-setup" id="practice-setup">
+          <label>
+            Unit
+            <select id="practice-unit-select"></select>
+          </label>
+
+          <div class="practice-type-grid">
+            <button class="practice-type-card selected" data-practice-type="vocabulary">
+              <span class="type-icon">Aa</span>
+              <strong>Vocabulary test</strong>
+              <small>Translate words and choose the correct meaning.</small>
+            </button>
+
+            <button class="practice-type-card" data-practice-type="sentences">
+              <span class="type-icon">↪</span>
+              <strong>Reply practice</strong>
+              <small>Write a natural answer to everyday Italian prompts.</small>
+            </button>
+
+            <button class="practice-type-card" data-practice-type="mixed">
+              <span class="type-icon">Mix</span>
+              <strong>Mixed test</strong>
+              <small>Combine vocabulary and conversation replies.</small>
+            </button>
+          </div>
+
+          <button class="primary-btn large" id="start-test-btn">Start test</button>
+        </div>
+
+        <div class="quiz-card hidden" id="quiz-card">
+          <div class="quiz-topline">
+            <span id="quiz-unit-name"></span>
+            <span id="quiz-counter"></span>
+          </div>
+          <div class="progress-track compact"><span id="quiz-progress-bar"></span></div>
+
+          <div class="quiz-body">
+            <span class="eyebrow" id="question-type"></span>
+            <h2 id="question-prompt"></h2>
+            <p id="question-instruction"></p>
+            <div id="question-answer-area"></div>
+            <div id="question-feedback" class="feedback hidden"></div>
+          </div>
+
+          <div class="quiz-actions">
+            <button class="secondary-btn" id="quit-test-btn">Quit</button>
+            <button class="primary-btn" id="check-answer-btn">Check answer</button>
+            <button class="primary-btn hidden" id="next-question-btn">Next question</button>
+          </div>
+        </div>
+
+        <div class="result-card hidden" id="result-card">
+          <span class="eyebrow">TEST COMPLETE</span>
+          <div class="result-score" id="result-score"></div>
+          <h2 id="result-title"></h2>
+          <p id="result-message"></p>
+          <div class="result-actions">
+            <button class="primary-btn" id="retry-test-btn">Try again</button>
+            <button class="secondary-btn" id="return-practice-btn">Choose another test</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="progress-view" class="view">
+      <section class="section-shell">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">YOUR PROGRESS</span>
+            <h1>Course overview</h1>
+          </div>
+          <button class="secondary-btn danger" id="reset-progress-btn">Reset progress</button>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <span>Units opened</span>
+            <strong id="units-opened-stat">0 / 20</strong>
+          </article>
+          <article class="stat-card">
+            <span>Tests completed</span>
+            <strong id="tests-completed-stat">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Average score</span>
+            <strong id="average-score-stat">—</strong>
+          </article>
+        </div>
+
+        <div id="progress-unit-list" class="progress-unit-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>Study Notes — Italian A2 language practice.</p>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
